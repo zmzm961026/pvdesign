@@ -4,10 +4,11 @@
     <div class="top1" style="height: 130px;"></div>
     <div class="content">
       <div class="list">
-        <router-link to="/project">
+        <a @click="goTo('并网光伏')">
+          <!--  to="/project"  -->
           <p>户用分布式并网光伏</p>
           <img src="./images/a1.png">
-        </router-link>
+        </a>
         <!-- <a href="Gridpv_project.html">
           
         </a> -->
@@ -51,6 +52,12 @@
     components:{
       Header,Footer
     },
+     methods: {
+      goTo(type) {
+        this.$store.dispatch('receiveProtype',{proType:type})
+        this.$router.replace('/project')
+      }
+    },
   }
 </script>
 
@@ -58,6 +65,9 @@
   .content{
     width: 1500px;
     color:#fff;
+  }
+  .content::after{
+    clear:both;content:'';display:block;width:0;height:0;visibility:hidden;
   }
   .list{
     width: 740px;

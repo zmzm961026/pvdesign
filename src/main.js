@@ -3,10 +3,11 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import '../src/assets/style/reset.css'
-import ElementUI from 'element-ui'
+import './plugins/element.js'
 import 'element-ui/lib/theme-chalk/index.css'
-
-Vue.use(ElementUI)
+import './filters'  //加载过滤器
+import echarts from 'echarts'
+Vue.prototype.$echarts = echarts
 Vue.config.productionTip = false
 // 前置守卫(guard)
 router.beforeEach((to, from, next) => {

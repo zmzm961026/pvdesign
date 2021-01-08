@@ -2,14 +2,27 @@
 直接更新state的多个方法的对象
 */
 // import Vue from 'vue'
-import {RECEIVE_USER_INFO,RECEIVE_PRODATA} from './mutations-type';
+import * as type from './mutations-type';
+// {RECEIVE_USER_INFO,RECEIVE_PRODATA,RECEIVE_PROID,RECEIVE_PRO_TYPE,RECEIVE_CITYID}
 export default {
-	[RECEIVE_USER_INFO](state, { userInfo }) {
+	[type.RECEIVE_USER_INFO](state, { userInfo }) {
 		state.userInfo = userInfo;
 		state.userID = userInfo.userId;
 		state.userName = userInfo.userName;
 	},
-	[RECEIVE_PRODATA](state, { paoData }) {
-		state.paoData = paoData;
+	[type.RECEIVE_PRO_TYPE](state, { proType }) {
+		state.proType = proType;
+	},
+	[type.RECEIVE_PRODATA](state,proData) {
+		state.proData = proData.项目名称;
+		state.proPage = proData.总页数;
+	},
+	[type.RECEIVE_PROID](state,{data,proID}) {
+		state.proData = data;
+		state.proID = proID;
+	},
+	[type.RECEIVE_CITYID](state,ProvinceCity) {
+		console.log(ProvinceCity)
+		state.ProvinceCity = ProvinceCity;
 	},
 }

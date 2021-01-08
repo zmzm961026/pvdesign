@@ -64,7 +64,7 @@
   margin: auto;
   color: #fff;
 }
-#app::after,.content::after{
+#app::after{
   clear:both;content:'';display:block;width:0;height:0;visibility:hidden;
 }
 </style>

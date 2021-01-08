@@ -9,9 +9,9 @@
           <h4>设计</h4>
           <p>本软件的主体功能包括气象数据分析、电气结构设计、设备选型与匹配、运行与控制策略设计、仿真数据分析五个部分，经过全流程设计与仿真之后，使用者可以从宏观和微观两个维度理解光伏电站的技术与经济评价。</p>
           <div>
-            <a href="index.html">
+            <a @click="ulHover(2)">
               <img src="./images/t24.png" alt="">
-              <button>点击进入</button>
+              <span>点击进入</span>
             </a>
           </div>
           <img src="../../assets/images/设计.png" alt="">
@@ -26,7 +26,7 @@
           <div>
             <a id="testIn" style="display: none;">
               <img src="./images/t22.png" alt="">
-              <button>点击进入</button>
+              <span>点击进入</span>
             </a>
           </div>
           <img src="../../assets/images/考试管理.png" alt="">
@@ -39,7 +39,7 @@
           <div>
             <a href="StudentRPL.html">
               <img src="./images/t23.png" alt="">
-              <button id="resultSearch">点击进入</button>
+              <span id="resultSearch">点击进入</span>
             </a>
           </div>
           <img src="../../assets/images/设计.png" alt="">
@@ -64,8 +64,18 @@
     components:{
       Header,Footer
     },
-    mounted () {
-      
+    data() {
+      return {
+        ulIndex: -1
+      }
+    },
+    methods: {
+      ulHover(index) {
+        if(index===2){
+          this.$router.push('/listIndex')
+        }
+        this.ulIndex = index;
+      }
     },
   }
 </script>
