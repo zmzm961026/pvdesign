@@ -10,7 +10,7 @@ const GRIDPV_URL = 'http://besign.bjhirek.com:4755';
 export const reqLogin = ({ userName, password }) => ajax(`${TEACHER_URL}/service/login/login?userName=${userName}&password=${password}`, {}, 'POST');
 // 2.获取并网项目列表
 // http://besign.bjhirek.com:4755/api/FangAn/ProjectLis
-export const reqGridProjectList = ({ userID, page }) => ajax(`${GRIDPV_URL}/api/FangAn/ProjectLis?uid=${userID}&page=${page}`);
+export const reqGridProjectList = ({ userID, page }) => ajax(`${GRIDPV_URL}/api/FangAn/ProjectLis`, {uid:userID, page:page});
 // 3.获取项目详细信息
 // http://besign.bjhirek.com:4755/api/FangAn/OpenPro?Pid=
 export const openProject = ({ Pid }) => ajax(`${GRIDPV_URL}/api/FangAn/OpenPro?Pid=${Pid}`,{},'POST');
