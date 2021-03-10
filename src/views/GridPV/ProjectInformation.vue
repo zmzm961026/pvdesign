@@ -64,10 +64,13 @@
             <div class="clear"></div>
           </ul>
         </div>
-        <div id="map" class="map_right"></div>
+        <div id="map" class="map_right">
+          <baidu-map :lng="llia.经度" :lat="llia.纬度" @changeCity="changeCity"></baidu-map>
+        </div>
         <div class="clear"></div>
         <!-- <button>保存</button> -->
       </div>
+
       <!-- 环境信息 -->
       <ProjectEnvironment :environmentList="environmentList"/>
       <div class="clear"></div>
@@ -83,21 +86,22 @@
 </template>
 
 <script>
-  import Header from '../../components/Header/Header'
-  import Footer from '../../components/Footer/Footer'
-  import ProjectHeader from '../../components/Project/ProjectHeader'
-  // import ProjectMap from '../../components/Project/ProjectMap'
-  import ProjectEnvironment from '../../components/Project/ProjectEnvironment'
+  import Header from '@/components/Header/Header'
+  import Footer from '@/components/Footer/Footer'
+  import ProjectHeader from '@/components/Project/ProjectHeader'
+  // import ProjectMap from '@/components/Project/ProjectMap'
+  import BaiduMap from '@/components/BaiduMap/BaiduMap'
+  import ProjectEnvironment from '@/components/Project/ProjectEnvironment'
   import {
     reqProvinceList,
     reqCityList,
     reqCityInfo
-  } from '../../api/index'
+  } from '@/api/index'
   import Vuex from 'vuex'
   import { mapState,mapMutations,mapActions } from "vuex";
   export default {
     components:{
-      Header,Footer,ProjectHeader,ProjectEnvironment
+      Header,Footer,ProjectHeader,ProjectEnvironment,BaiduMap
     },
     data() {
       return {
@@ -108,7 +112,9 @@
         city:"",// 城市
         cityID:"",// 城市ID
         llia:{},// 经纬度倾角、海拔
-        environmentList:{},// 折线图数据
+        environmentList:{},// 折线图数据,
+        PBoolen:true,
+        CBoolen:true,
       }
     },
     mounted () {
@@ -116,35 +122,52 @@
       this.getProvince()
     },
     computed:{
-      ...mapState(['proID'])
+      ...mapState(['proID','ProvinceCity'])
     },
     methods: {
       async getProvince() {
         const result = await reqProvinceList();
         console.log(result)
         this.provinceList=result[0];
+        if(this.ProvinceCity.province&&this.PBoolen==true){
+          this.province=this.ProvinceCity.province;
+          this.PBoolen=false;
+        }
       },
       async getCity(){
         const result = await reqCityList({ProName:this.province});
         this.cityList = result[0];
         // this.cityID = props ? this.cityList.find(ele => ele.id === val).name : ''
         console.log(this.cityList,this.cityID)
+        if(this.ProvinceCity.city&&this.CBoolen==true){
+          this.city=this.ProvinceCity.city;
+          this.cityID=this.ProvinceCity.cityID;
+          this.CBoolen=false;
+        }
       },
-      ...mapMutations(['receive_cityid']),
+      // ...mapMutations(['receive_cityid']),
       async cityInfo(event){
         let obj = {}
         obj = this.cityList.find(item => item.city === this.city ) //筛选出对应数据
         this.cityID = obj.id;
         this.environmentList = await reqCityInfo({pid:this.proID,cid:this.cityID});
         this.llia = this.environmentList.经纬度[0];
-        if(this.cityID) Promise.all([this.receive_cityid({province:this.province,city:obj.city,cityID:this.cityID})]);
+        this.llia.经度=Number(this.llia.经度);
+        this.llia.纬度=Number(this.llia.纬度);
+        // this.receiveProvinceCity()
+        this.$store.dispatch('receiveProvinceCity',{province:this.province,city:obj.city,cityID:this.cityID})
+        // if(this.cityID) Promise.all([this.receive_cityid({province:this.province,city:obj.city,cityID:this.cityID})]);
       },
+      changeCity(message){
+        console.log(message)
+      }
     },
     watch: {
       province: function (newValue, oldValue) {
         this.city = ''
         this.cityID = '';
         this.llla={};
+        this.getCity()
       }
     },
   }

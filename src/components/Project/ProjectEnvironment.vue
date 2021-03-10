@@ -2,84 +2,62 @@
   <div class="line">
     <div>
       <p>温度</p>
-      <div id="main1" class="zxt" style="background:none;width: 100%;"></div>
-      <div class="time">
-        <div id="time1" class="time_check">
-          <label onclick="city(tab('city').options[tab('city').selectedIndex].getAttribute('id'))"><input name="wd_time" type="radio" class="tui-checkbox" value="" checked />年</label>
-          <label><input name="wd_time" type="radio" class="tui-checkbox" value="" />月</label>
-          <label><input name="wd_time" type="radio" class="tui-checkbox" value="" />日</label>
-        </div>
-        <div id="time_input1" class="time_input">
-          <input type="text" id="wd_y" autocomplete="off" class="Wdate datebom"  style="display: block;border:1px solid #40a7fd;box-shadow:0 0 0; background: none;"/>
-          <!--  onclick="WdatePicker({ maxDate: '%y-%M-%d', skin: 'whyGreen', dateFmt: 'yyyy年'})"  -->
-          <!-- ,onpicked:function(){ipt_click(this,'d243')} -->
-          <input type="text" id="wd_m" autocomplete="off" class="Wdate datebom" placeholder="请选择月" onclick="WdatePicker({ skin: 'whyGreen', dateFmt: 'MM月',onpicked:function(){mon_click(this,'wd_m')}})" />
-          <input ID="wd_d" autocomplete="off" placeholder="请选择时间" type="text" class="Wdate datebom" onclick="WdatePicker({dateFmt:'MM-dd',onpicked:function(){day_click(this,'wd_d')}})" />
-        </div>
-      </div>
+      <date-picker></date-picker>
+      <ev-echarts 
+        :evData="environmentList.温度信息"
+        name="温度"
+        yUnit="单位（℃）"
+      ></ev-echarts>
     </div>
     <div>
       <p>辐照度</p>
-      <div id="main2" class="zxt" style="background:none;width: 100%;"></div>
-      <div class="time">
-        <div id="time2" class="time_check">
-          <label onclick="city(tab('city').options[tab('city').selectedIndex].getAttribute('id'))"><input name="fz_time" type="radio" class="tui-checkbox" value="" checked />年</label>
-          <label><input name="fz_time" type="radio" class="tui-checkbox" value="" />月</label>
-          <label><input name="fz_time" type="radio" class="tui-checkbox" value="" />日</label>
-        </div>
-        <div id="time_input2" class="time_input">
-          <input type="text" id="fz_y" autocomplete="off" class="Wdate datebom"  style="display: block;border:1px solid #40a7fd;box-shadow:0 0 0; background: none;"/>
-          <!--  onclick="WdatePicker({ maxDate: '%y-%M-%d', skin: 'whyGreen', dateFmt: 'yyyy年'})"  -->
-          <!-- ,onpicked:function(){ipt_click(this,'d243')} -->
-          <input type="text" id="fz_m" autocomplete="off" class="Wdate datebom" placeholder="请选择月" onclick="WdatePicker({  skin: 'whyGreen', dateFmt: 'MM月',onpicked:function(){mon_click(this,'fz_m')}})" />
-          <input ID="fz_d" autocomplete="off" placeholder="请选择时间" type="text" class="Wdate datebom" onclick="WdatePicker({dateFmt:'MM-dd',onpicked:function(){day_click(this,'fz_d')}})" />
-        </div>
-      </div>
+      <date-picker></date-picker>
+      <ev-echarts 
+        :evData="environmentList.辐照度" 
+        name="辐照度"
+        yUnit="单位（W/㎡）"
+      ></ev-echarts>
     </div>
     <div>
       <p>风速</p>
-      <div id="main3" class="zxt"  style="background:none;width: 100%;"></div>
-      <div class="time">
-        <div id="time3" class="time_check">
-          <label onclick="city(tab('city').options[tab('city').selectedIndex].getAttribute('id'))"><input name="fs_time" type="radio" class="tui-checkbox" value="" checked />年</label>
-          <label><input name="fs_time" type="radio" class="tui-checkbox" value="" />月</label>
-          <label><input name="fs_time" type="radio" class="tui-checkbox" value="" />日</label>
-        </div>
-        <div id="time_input3" class="time_input">
-          <input type="text" id="fs_y" autocomplete="off" class="Wdate datebom"  style="display: block;border:1px solid #40a7fd;box-shadow:0 0 0; background: none;"/>
-          <!--  onclick="WdatePicker({ maxDate: '%y-%M-%d', skin: 'whyGreen', dateFmt: 'yyyy年'})"  -->
-          <!-- ,onpicked:function(){ipt_click(this,'d243')} -->
-          <input type="text" id="fs_m" autocomplete="off" class="Wdate datebom" placeholder="请选择月" onclick="WdatePicker({ skin: 'whyGreen', dateFmt: 'MM月',onpicked:function(){mon_click(this,'fs_m')}})" />
-          <input ID="fs_d" autocomplete="off" placeholder="请选择时间" type="text" class="Wdate datebom" onclick="WdatePicker({dateFmt:'MM-dd',onpicked:function(){day_click(this,'fs_d')}})" />
-        </div>
-      </div>
+      <date-picker></date-picker>
+      <ev-echarts 
+        :evData="environmentList.风速" 
+        name="风速"
+        yUnit="单位（m/s）"
+      ></ev-echarts>
     </div>
     <div>
       <p>湿度</p>
-      <div id="main4" class="zxt" style="background:none;width: 100%;"></div>
-      <div class="time">
-        <div id="time4" class="time_check">
-          <label onclick="city(tab('city').options[tab('city').selectedIndex].getAttribute('id'))"><input name="sd_time" type="radio" class="tui-checkbox" value="" checked />年</label>
-          <label><input name="sd_time" type="radio" class="tui-checkbox" value="" />月</label>
-          <label><input name="sd_time" type="radio" class="tui-checkbox" value="" />日</label>
-        </div>
-        <div id="time_input4" class="time_input">
-          <input type="text" id="sd_y" autocomplete="off" class="Wdate datebom"  style="display: block;border:1px solid #40a7fd;box-shadow:0 0 0; background: none;" onclick=""/>
-          <!--  onclick="WdatePicker({ maxDate: '%y-%M-%d', skin: 'whyGreen', dateFmt: 'yyyy年'})"  -->
-          <!-- ,onpicked:function(){ipt_click(this,'d243')} -->
-          <input type="text" id="sd_m" autocomplete="off" class="Wdate datebom" placeholder="请选择月" onclick="WdatePicker({ skin: 'whyGreen', dateFmt: 'MM月',onpicked:function(){mon_click(this,'sd_m')}})" />
-          <input ID="sd_d" autocomplete="off" placeholder="请选择时间" type="text" class="Wdate datebom" onclick="WdatePicker({dateFmt:'MM-dd',onpicked:function(){day_click(this,'sd_d')}})" />
-        </div>
-      </div>
+      <date-picker></date-picker>
+      <ev-echarts 
+        :evData="environmentList.湿度" 
+        name="湿度"
+        yUnit="单位（%）"
+      ></ev-echarts>
     </div>
-    <div class="clear"></div>
   </div>
 </template>
 
 <script>
+  import DatePicker from '../DatePicker/DatePicker'
+  import evEcharts from '../Echarts/evEcharts'
   export default {
     props: {
-      environmentList:{},
+      environmentList: {
+        type: Object,
+        default: function () {
+          return {}
+        }
+      },
+    },
+    components: {
+      evEcharts,DatePicker
+    },
+    watch: {
+      environmentList(newValue, oldValue) {
+        this.environmentList = newValue;
+      }
     },
   }
 </script>

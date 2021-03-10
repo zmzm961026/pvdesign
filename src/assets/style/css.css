@@ -148,41 +148,6 @@ input:-ms-input-placeholder { /* Internet Explorer 10+  适配ie*/
 .list_name div p:nth-child(2){
     flex-grow: 1;
 }
-.time{
-    position: absolute;
-    right: 0;
-    top: 0;
-    background: none;
-    width: 300px;
-    height: 50px;
-    margin-top: 90px;
-    margin-right: 50px;
-}
-.time div{
-    /* width:42%; */
-    float: left;
-}
-.time div:nth-child(2){
-    width: 56%;
-    float: right;
-}
-.time_check label{
-    font-size: 14px;
-    line-height: 20px;
-    float: left;
-    margin: 0 5px;
-}
-.time_input input{
-    display: none;
-    float: left;
-    flex-grow: 1;
-    border:1px solid #ffffff;
-    background-color: #40a7fd;
-    box-shadow:0px 0px 2px #3d3d3d inset;
-    color:#fff;
-    height: 26px;
-    text-indent: 10px;
-}
 #main1,.zxt{
     width: 80%;
     height: 300px;

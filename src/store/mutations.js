@@ -21,8 +21,12 @@ export default {
 		state.proData = data;
 		state.proID = proID;
 	},
-	[type.RECEIVE_CITYID](state,ProvinceCity) {
-		console.log(ProvinceCity)
+	// [type.RECEIVE_CITYID](state,ProvinceCity) {
+	// 	console.log(ProvinceCity)
+	// 	state.ProvinceCity = ProvinceCity;
+	// },
+	[type.RECEIVE_PROVINCECITY](state,ProvinceCity) {
+		// console.log(ProvinceCity)
 		state.ProvinceCity = ProvinceCity;
 	},
 }

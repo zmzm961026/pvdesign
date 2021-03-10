@@ -6,7 +6,13 @@ import '../src/assets/style/reset.css'
 import './plugins/element.js'
 import 'element-ui/lib/theme-chalk/index.css'
 import './filters'  //加载过滤器
-import echarts from 'echarts'
+import * as echarts from 'echarts';
+
+import BMap from 'vue-baidu-map'
+Vue.use(BMap, {
+  ak: 'cIvfj3LxqKzkhAvrA8uMwWAL7vSiRZZp'
+})
+
 Vue.prototype.$echarts = echarts
 Vue.config.productionTip = false
 // 前置守卫(guard)

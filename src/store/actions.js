@@ -6,6 +6,7 @@ import {
   RECEIVE_PRO_TYPE,
   RECEIVE_PRODATA,
   RECEIVE_PROID,
+  RECEIVE_PROVINCECITY,
 } from './mutations-type';
 import {
   reqGridProjectList,
@@ -32,7 +33,7 @@ export default {
     console.log(result)
     commit(RECEIVE_PROID,{data:result,proID:proID})
   },
-  receiveProvinceCity() {
-    
+  receiveProvinceCity({ commit }, PROVINCECITY) {
+    commit(RECEIVE_PROVINCECITY,PROVINCECITY)
   }
 }
